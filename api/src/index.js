@@ -8,7 +8,7 @@ const routes = require('./routes/index')
 
 
 //Esto deberia ser una variable de entorno
-const MONGO_URI = 'mongodb+srv://user_123:mPR5f0gBE491HyAb@cluster0.nn2gwlo.mongodb.net/?retryWrites=true&w=majority';
+const MONGO_URI = process.env.MONGO_URI || 'mongodb+srv://user_123:mPR5f0gBE491HyAb@cluster0.nn2gwlo.mongodb.net/?retryWrites=true&w=majority';
 //conexion a mongoDB atlas
 mongoose.connect(MONGO_URI, {
   useNewUrlParser: true,
