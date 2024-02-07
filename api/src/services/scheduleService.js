@@ -3,7 +3,7 @@ const Appointment = require('../models/appointment.model');
 // const axios = require('axios')
 
 
-async function scheduleApp(date, name, service, start_time, phone_number) {
+async function scheduleApp(date, name, service, start_time, userId) {
 
 
     // Convertir la fecha y hora de inicio a un objeto Date
@@ -26,7 +26,7 @@ async function scheduleApp(date, name, service, start_time, phone_number) {
     existingAppointment.name = name;
     existingAppointment.service = service;
     existingAppointment.status = 'false'; // Asumiendo que 'false' significa ocupado
-    existingAppointment.phone_number = phone_number;
+    existingAppointment.userId = userId;
     await existingAppointment.save();
 
     return { isBusy: false }

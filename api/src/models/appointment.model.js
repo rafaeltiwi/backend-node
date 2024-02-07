@@ -8,7 +8,7 @@ const appointmentSchema = new mongoose.Schema({
   service: String,
   status: {type : String , default: "true"},
   schedule: String ,
-  phone_number: {type: String ,default: "+10000000000"}
+  userId: {type: String ,default: "+10000000000"}
 });
 
 module.exports = mongoose.model('Appointment', appointmentSchema);

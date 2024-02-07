@@ -4,14 +4,14 @@ const { scheduleApp } = require('../services/scheduleService')
 
 router.post('/', async (req, res) => {
     try {
-        const { date, name, service, start_time, phone_number } = req.body;
+        const { date, name, service, start_time, userId } = req.body;
 
         if (!date || !name || !service || !start_time) {
             return res.status(400).send("Faltan datos necesarios para agendar la cita.");
         }
 
 
-        const newAppointment = await scheduleApp(date, name, service, start_time, phone_number)
+        const newAppointment = await scheduleApp(date, name, service, start_time, userId)
 
         if (newAppointment.isBusy) {
             return res.status(400).send("La hora seleccionada ya está ocupada.");
