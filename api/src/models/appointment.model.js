@@ -8,7 +8,7 @@ const appointmentSchema = new mongoose.Schema({
   service: String,
   status: {type : String , default: "true"},
   schedule: String ,
-  userId: {type: String ,default: "+10000000000"}
+  userId: String 
 });
 
 module.exports = mongoose.model('Appointment', appointmentSchema);
