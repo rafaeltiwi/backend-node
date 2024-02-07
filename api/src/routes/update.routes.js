@@ -2,13 +2,13 @@ const express = require('express');
 const router = express.Router();
 const { updateAppointment } = require('../services/updateService')
 
-router.patch('/phone/:phoneNumber', async (req, res) => {
-    const { phoneNumber } = req.params;
+router.patch('/user/:user_id', async (req, res) => {
+    const { user_id } = req.params;
     const updateData = req.body;
 
     try {
         /// aqui ir la logica de actualizar las citas
-        const updatedAppointment = await updateAppointment(phoneNumber, updateData)
+        const updatedAppointment = await updateAppointment(user_id, updateData)
 
             
               
