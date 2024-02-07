@@ -3,10 +3,10 @@ const Appointment = require('../models/appointment.model');
 const { scheduleApp } = require('./scheduleService');
 
 
-async function updateAppointment(phoneNumber, updateData) {
+async function updateAppointment(user_id, updateData) {
     // Verificar si la hora está disponible
     const appointment = await Appointment.findOne({
-        phone_number: phoneNumber,
+        userId: user_id,
     });
 
 
@@ -15,7 +15,7 @@ async function updateAppointment(phoneNumber, updateData) {
         throw new Error('404 cita no encontrada')
     }
 
-        const { date, name, service, start_time, phone_number } = updateData
+        const { date, name, service, start_time, userId } = updateData
         const appointmentDateTime = moment(`${date} ${start_time}`, "DD/MM/YYYY HH:mm").toDate();
 
 
@@ -26,14 +26,14 @@ async function updateAppointment(phoneNumber, updateData) {
             //aqui es donde va la logica si no son iguales
             // tengo que buscar si esa fecha esta disponible
             console.log("Entrando?", appointmentDateTime, date)
-            const newAppointment = scheduleApp(date, name, service, start_time, phone_number)
+            const newAppointment = scheduleApp(date, name, service, start_time, userId)
 
             ///dejando la hora libre
 
             appointment.name = '';
             appointment.service = '';
             appointment.status = 'true'; // Asumiendo que 'true' significa Disponible
-            appointment.phone_number = '';
+            appointment.userId = '';
             await appointment.save();
 
 
@@ -42,7 +42,7 @@ async function updateAppointment(phoneNumber, updateData) {
 
         
         const updatedAppointment = await Appointment.updateOne(
-            { phone_number: phoneNumber },
+            { userId: userId },
             { $set: updateData },
              { new: true } // Esto devuelve el documento modificado
         );
