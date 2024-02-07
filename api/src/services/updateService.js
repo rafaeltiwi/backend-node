@@ -25,7 +25,7 @@ async function updateAppointment(user_id, updateData) {
         if (!compareDates) {
             //aqui es donde va la logica si no son iguales
             // tengo que buscar si esa fecha esta disponible
-            console.log("Entrando?", appointmentDateTime, date)
+           // console.log("Entrando?", appointmentDateTime, date)
             const newAppointment = scheduleApp(date, name, service, start_time, userId)
 
             ///dejando la hora libre
