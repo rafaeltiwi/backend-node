@@ -5,7 +5,7 @@ const { Addavailability } = require('../services/availibilityService');
 
 router.post('/', async (req, res) => {
     try {
-        const { date, startTime,endTime, interval } = req.body;
+        const { date, startTime, endTime, interval } = req.body;
         if (!date || !endTime ||!startTime || !interval) {
             return res.status(400).send("Faltan datos necesarios para agregar la disponibilidad.");
         }
