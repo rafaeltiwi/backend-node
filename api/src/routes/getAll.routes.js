@@ -3,7 +3,7 @@ const router = express.Router();
 const Appointment = require('../models/appointment.model');
 const moment = require('moment')
 
-router.get('/', async (req, res) => {
+router.post('/', async (req, res) => {
 
     const startOfDay = moment(req.body.date, "DD/MM/YYYY").startOf('day');
     const endOfDay = moment(req.body.date, "DD/MM/YYYY").endOf('day');
