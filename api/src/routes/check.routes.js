@@ -4,7 +4,7 @@ const router = express.Router();
 const {checkAvailability} = require('../services/checkService')
 
 router.post('/', async (req, res) => {
-    const dates = req.body; // Asumiendo que el cuerpo de la solicitud es un array de fechas
+    const dates = req.body.date; // Asumiendo que el cuerpo de la solicitud es un array de fechas
 
     try {
 
